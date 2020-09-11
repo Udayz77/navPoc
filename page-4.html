@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta charset="UTF-8" />
+     <title>M2U Navigation</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+<style>
+     .loadChecks {
+          display: block;
+     }
+
+     .dispnone {
+          display: none;
+     }
+</style>
+
+<body>
+     <div class="container">
+          <div class="row">
+               <h1 class="mt-5">Welcome. This is <span id="pageTitle"></span></h1>
+          </div>
+          <div class="row">
+               <img alt="maybankLogo" src="./images/maybankLogo.png" />
+          </div>
+          <div class="row">
+               <a class="mt-3" href="/page-2.html">Navigate to Page 2</a>
+          </div>
+          <div class="row">
+               <a class="mt-3" href="/page-3.html">Navigate to Page 3</a>
+          </div>
+          <div class="row">
+               <a class="mt-3" href="/page-5.html">Navigate to Page 5</a>
+          </div>
+          <div class="row">
+               <a class="mt-3" href="/index.html">Back to Main Page</a>
+          </div>
+          <div class="row float-right dispnone" id="lcIcon">
+               <img alt="liveIcon" src="./images/liveIcon.png" />
+          </div>
+     </div>
+</body>
+<script>
+     document.getElementById('pageTitle').append(window.location.pathname);
+     let checkSessStorage = JSON.parse(sessionStorage.getItem('loadChecks'));
+     function enableIcon() {
+          let enableIcon = document.getElementsByClassName('loadChecks');
+          for (let i = 0; i < checkSessStorage.length; i++) {
+               var element = document.getElementById('lcIcon');
+               if (window.location.pathname === checkSessStorage[i].uri_type && checkSessStorage[i].flag === 'ON') {
+                    element.classList.remove("dispnone");
+                    element.classList.toggle("loadChecks");
+                    return
+               }
+          }
+     }
+     enableIcon();
+</script>
+
+</html>
