@@ -7,7 +7,7 @@ function enableIcon() {
           if (window.location.pathname === checkSessStorage[i].uri_type && checkSessStorage[i].flag === 'ON') {
                element.classList.remove("dispnone");
                element.classList.toggle("loadChecks");
-               return;
+               break;
           }
      }
 }
